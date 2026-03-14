@@ -13,6 +13,13 @@ We strongly recommend following the instructions below to set up a copy of this 
 7. Launch VS Code by running `code .` (mind the dot).
 8. Alternatively, you may run VS Code from your application menu. Then choose the option "Open folder" and choose the folder `GlimpseOfLean` (_not_ one of its subfolders).
 
+### Updating the exercise set
+
+
+1. Open a terminal in the folder `GlimpseOfLean`
+2. Run `git fetch`.
+3. Run `git pull`.
+
 ## Exercises
 
 **note**: these exercise files may be updated until the start of the workshop. If you want to play around with these beforehand, it is recommended to either work on a separate git branch, or create a manual copy of this project (don't forget to run `lake exe cache get` in the copied folder before opening it in VS Code).
