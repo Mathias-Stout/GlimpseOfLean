@@ -28,7 +28,7 @@ The exercises **01-04** will guide you through handling basic logical operations
 
 Depending on the area of mathematics you are most familiar with, you may then want to try one of the exercises in the `Topics` folder. We recommend either
 
-* `ClassicalPropositionalLogic.lean`: prove completeness of classical propositional logic.
+* `ClassicalPropositionalLogic.lean`: prove soundness of classical propositional logic.
 * `RingTheory.lean`: prove the first isomorphism theorem and Chinese remainder theorem for commutative rings.
 *  `SequenceLimits.lean`: prove results from analysis about sequences and their limits. In particular, show that every cluster point of a Cauchy sequence is a limit of the sequence.
 
