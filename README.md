@@ -1,70 +1,30 @@
-# A glimpse of Lean
+This repository contains the exercises for a mini-workshop at McMaster University on learning Lean "for the working mathematician". 
+It is based on Patrick Massot's [Glimpse of Lean](https://github.com/PatrickMassot/GlimpseOfLean/tree/master#).
+We strongly recommend following the instructions below to set up a copy of this project on your local machine, following the [community instructions](https://leanprover-community.github.io/install/project.html#working-on-an-existing-project).
 
-This repository is an introduction to theorem proving in Lean for the impatient.
-The goal is to get a feel for what proving in Lean looks like in 2 or 3 hours,
-or maybe devote half a day or a full day.
+## Set up this project on your local machine
 
-There are two tracks. Both start with reading the `Introduction.lean` file.
+1. Download VS Code and Lean by following the [official instructions](https://lean-lang.org/install/)
+2. Make sure you have [git](https://git-scm.com/) installed. You may want to restart your computer afterwards.
+3. Open a terminal in the directory where you would like this project to live (on Windows you can use file explorer to navigate to this directory, then right click -> open terminal). You do not need to create a new folder. The next commands will create a subfolder named `GlimpseOfLean` in the chosen directory.
+4. Run `git clone https://github.com/Mathias-Stout/GlimpseOfLean.git`
+5. Run `cd GlimpseOfLean`. This moves you inside the newly created `GlimpseOfLean` folder.
+6. Run `lake exe cache get`. This will prevent your editor from rebuilding the entire Mathlib when opening this project (which could take a very long time).
+7. Launch VS Code by running `code .` (mind the dot).
+8. Alternatively, you may run VS Code from your application menu. Then choose the option "Open folder" and choose the folder `GlimpseOfLean` (_not_ one of its subfolders).
 
-Then the short track continues in the `Shorter.lean` file which is meant to give
-you access to not completely empty mathematical proofs in two hours if you are
-ready to move pretty fast.
+## Exercises
 
-If you have a bit more time, you should instead read explanations and do
-exercises in the `Basics` folder, and then choose to work on one file from the
-`Topics` folder. Of course, you can play with all files from that folder if you
-have even more time.
+**note**: these exercise files may be updated until the start of the workshop. If you want to play around with these beforehand, it is recommended to either work on a separate git branch, or create a manual copy of this project (don't forget to run `lake exe cache get` in the copied folder before opening it in VS Code).
 
-To work using Lean, you either have to install Lean locally, or use a lean4web
-server, or use Codespaces or use Gitpod.
+The exercises **01-04** will guide you through handling basic logical operations. Depending on your familiarity with Lean, you may elect to go through these in detail, or refer back to them when relevant.
 
-## Online version, no registration
+Depending on the area of mathematics you are most familiar with, you may then want to try one of the exercises in the `Topics` folder. We recommend either
 
-If you don’t want to install Lean and don’t want to create an account on any
-website, you can use the [lean4web server](https://live.lean-lang.org/) hosted by the [Lean FRO](https://lean-fro.org/) as follows:
+* `ClassicalPropositionalLogic.lean`: prove completeness of classical propositional logic.
+* `RingTheory.lean`: prove the first isomorphism theorem and Chinese remainder theorem for commutative rings.
+*  `SequenceLimits.lean`: prove results from analysis about sequences and their limits. In particular, show that every cluster point of a Cauchy sequence is a limit of the sequence.
 
-* read [the introduction file](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FIntroduction.lean)
-* then read and edit the [explanations and exercises file](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FShorter.lean) of the shorter track.
+More exercises and area-specific projects will be added before the start of the workshop.
 
-If you want to do the longer track then the relevant links are:
-* [01Rewriting](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2F01Rewriting.lean)
-* [02Iff](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2F02Iff.lean)
-* [03Forall](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2F03Forall.lean)
-* [04Exists](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2F04Exists.lean)
-
-for the basics. And then you can choose depending on your mathematical
-interests:
-* [SequenceLimits](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FSequenceLimits.lean) for elementary properties of sequences of real numbers.
-* [RingTheory](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FRingTheory.lean) for some commutative algebra, up to the Chinese remainder theorem in commutatives rings.
-* [Probability](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FProbability.lean) for some probability theory.
-
-* [GaloisAdjunctions](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FGaloisAdjunctions.lean) for some elementary abstract non-sense (adjunctions between ordered sets with applications to group theory and topology).
-
-* [ClassicalPropositionalLogic](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FClassicalPropositionalLogic.lean) for some mathematical logic in a classical setting.
-* [IntuitionisticPropositionalLogic](https://live.lean-lang.org/#project=GlimpseOfLean&url=https%3A%2F%2Fraw.githubusercontent.com%2FPatrickMassot%2FGlimpseOfLean%2Frefs%2Fheads%2Fmaster%2FGlimpseOfLean%2FExercises%2FTopics%2FIntuitionisticPropositionalLogic.lean) for some mathematical logic in an intuitionistic setting (don’t try this if you don’t know about the use of Heyting algebras in intuitionistic logic).
-
-You can refer to the [tactics cheatsheet](tactics.pdf) while doing the
-exercises. Tactics are explained in the Lean file, but the pdf can be more
-convenient as a reference.
-
-## Online version, with registration
-
-There are also websites that are a bit more comfortable but require
-creating a [GitHub](www.github.com) account.
-
-* To use codespaces, make sure you’re logged in to GitHub, click the button below, select `4-core`, and then press `Create codespace`. After a few minutes an editor with Lean working will open in your browser.
-
-    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/PatrickMassot/GlimpseOfLean)
-
-* Gitpod is very similar to Codespaces, click the button below, press `Continue` and wait a few minutes.
-
-    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/PatrickMassot/GlimpseOfLean)
-
-## Local installation
-
-If you want the full luxury Lean experience, you should install it on your
-computer.
-
-For this you can follow the instructions [here](https://leanprover-community.github.io/get_started.html).
-
-If you have a lot more time, you should read the book [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/).
+There is also the `shorter.lean` file: it fast-tracks you through some of the basics of files 01-04 and culminates with a not-entirely trivial statement on limits of sequences.
