@@ -1,6 +1,7 @@
 This repository contains the exercises for a mini-workshop at McMaster University on learning Lean "for the working mathematician". 
 It is based on Patrick Massot's [Glimpse of Lean](https://github.com/PatrickMassot/GlimpseOfLean/tree/master#).
 We strongly recommend following the instructions below to set up a copy of this project on your local machine, following the [community instructions](https://leanprover-community.github.io/install/project.html#working-on-an-existing-project).
+To get a taste of Lean before the workshop, you can have a look at the [Natural Number Game](https://adam.math.hhu.de/#/)
 
 ## Set up this project on your local machine
 
