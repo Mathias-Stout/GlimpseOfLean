@@ -41,13 +41,11 @@ prove one-by-one.
 -/
 
 example (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : 0 < a^2 + b^2 := by
-  -- sorry
   apply add_pos
   apply sq_pos_of_pos
   exact ha
   apply sq_pos_of_pos
   exact hb
-  -- sorry
 
 /-
 You can also give a proof with forward reasoning, using the `have` tactic.
@@ -71,12 +69,10 @@ example (a : ℝ) (ha : 0 < a) : 0 < (a^2)^2 := by
 /- Now prove the same lemma as before using forwards reasoning. -/
 
 example (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : 0 < a^2 + b^2 := by
-  -- sorry
   have h2a : 0 < a^2 := by
     exact sq_pos_of_pos ha
   have h2b : 0 < b^2 := sq_pos_of_pos hb -- using the condensed spelling
   exact add_pos h2a h2b
-  -- sorry
 
 
 /- ## Proving implications
@@ -92,11 +88,9 @@ example (a b : ℝ) : a > 0 → b > 0 → a + b > 0 := by
 
 /- Now prove the following simple statement in propositional logic. -/
 example (p q r : Prop) : (p → q) → (p → q → r) → p → r := by
-  -- sorry
   intro h1 h2 h3
   apply h2 h3
   exact h1 h3
-  -- sorry
 
 /-
 Note that, when using `intro`, you need to give a name to the assumption.
@@ -132,11 +126,9 @@ Let's prove a variation
 -/
 
 example {a b : ℝ} (c : ℝ) : a + c ≤ b + c ↔ a ≤ b := by
-  -- sorry
   rw [← sub_nonneg]
   ring
   rw [sub_nonneg]
-  -- sorry
 
 /-
 The above lemma is already in the mathematical library, under the name `add_le_add_iff_right`:
@@ -171,11 +163,9 @@ example {a b : ℝ}  (ha : 0 ≤ a) : b ≤ a + b := by
 /- Let's do a variant using `add_le_add_iff_left a : a + b ≤ a + c ↔ b ≤ c` instead. -/
 
 example (a b : ℝ) (hb : 0 ≤ b) : a ≤ a + b := by
-  -- sorry
   calc
     a = a + 0 := by ring
     _ ≤ a + b := by exact (add_le_add_iff_left a).2 hb
-  -- sorry
 
 /-
 Important note: in the previous exercises, we used lemmas like `add_le_add_iff_left` as
@@ -213,7 +203,6 @@ example (a b : ℝ) : (a-b)*(a+b) = 0 ↔ a^2 = b^2 := by
 /- You can try it yourself in this exercise. -/
 
 example (a b : ℝ) : a = b ↔ b - a = 0 := by
-  -- sorry
   constructor
   · intro h
     rw [h]
@@ -223,7 +212,6 @@ example (a b : ℝ) : a = b ↔ b - a = 0 := by
       a = b - (b - a) := by ring
       _ = b - 0       := by rw [h]
       _ = b           := by ring
-  -- sorry
 
 /-
 This is the end of this file where you learned how to handle implications and
