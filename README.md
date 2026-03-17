@@ -10,7 +10,7 @@ We strongly recommend following the instructions below to set up a copy of this 
 4. Run `git clone https://github.com/Mathias-Stout/GlimpseOfLean.git`
 5. Run `cd GlimpseOfLean`. This moves you inside the newly created `GlimpseOfLean` folder.
 6. Run `lake exe cache get`. This will prevent your editor from rebuilding the entire Mathlib when opening this project (which could take a very long time).
-7. Launch VS Code by running `code .` (mind the dot).
+7. Launch VS Code by running `code .` (mind the dot).  (MacOS users need to take a one-off extra [step](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line) to be able to launch VS Code from the command line.)
 8. Alternatively, you may run VS Code from your application menu. Then choose the option "Open folder" and choose the folder `GlimpseOfLean` (_not_ one of its subfolders).
 
 ### Updating the exercise set
