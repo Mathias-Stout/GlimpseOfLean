@@ -86,11 +86,35 @@
   % mono obsoleted by gcongr?
   \hline
   &\textbf{Searching}\\
-  \lean{apply?} & gives a list of lemmas that can apply to the current goal. \\
+  \lean{apply?} & gives a list of lemmas that can be applied to the current goal. \\
+  
+  \lean{exact?} & gives a lemma that closes the current goal. \\
+  
+  \lean{simp?} & gives a list of lemmas that would have the same effect if passed to \lean{simp only}. \\
+  \hline
+  &\textbf{Strategies for external searching} \\
+  Ctrl/Cmd + Click & Go to source where this theorem/definition is defined \\
+  \url{https://leanprover-community.github.io/mathlib4_docs/Mathlib} & Search the Mathlib documentation \\
+  \url{https://leansearch.net/} & Search for theorems and definitions in natural language. \\
+  \url{https://loogle.lean-lang.org/} & Search for theorems and definitions using part of their name or type. \\
   \bottomrule
 \end{longtable}
 \mbox{}\\
 \end{center}
+
+\textbf{Using LLMs}\\
+It may be counterproductive for your learning process to have an AI agent solve basic exercises for you. However, they can be powerful formalization assistants.
+From personal experience, the Claude Code and ChapGPT plugins for VS Code are both user-friendly and provide access to powerful models.
+Here are some things they can do: 
+
+\begin{enumerate}
+	\item Explain the reason for an error message. For best results, copy-paste the message and mention what confuses you about the error.
+	\item Search for Mathlib definitions and theorems that relate to the result you want to prove. Note that the .lake folder in your project holds these files. You may want to point this out to the agent so that it can search there instead of querying the internet.
+	\item Turn an imprecise English statement/proof into a precise one (so that it becomes easier to formalize). This often leads to better results than requesting a full formalization immediately.
+	\item Formalize a precise mathematical statement or proof. Don't forget to doublecheck that the formalized statement matches your informal input!
+	\item Complete the proof of a given statement. You may want to pass the LLM some relevant theorems (or even entire \verb*|.lean| files) to speed up the process. Make sure that you understand the output and clean up the code if necessary.
+	\item Refactor code so that it matches a certain style. A combination of a precise specification and some examples seems to work best.
+\end{enumerate}
 
 
 \end{document}
