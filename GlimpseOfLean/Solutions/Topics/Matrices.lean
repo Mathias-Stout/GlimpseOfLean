@@ -64,10 +64,10 @@ example : !![(1 : ℝ), 2; 3, 4]⁻¹ * !![(1 : ℝ), 2; 3, 4] = 1 := by
 /- Define the Vandermonde matrix over a vector `v` of length `n`, using `Matrix.of`.
   Recall that the `j`-th column of this matrix is the `j`-th power of the entries of `v`-/
 def myVandermonde {n : ℕ} (v : Fin n → ℝ) : Matrix (Fin n) (Fin n) ℝ :=
- sorry
+  Matrix.of (fun i j => (v i) ^ (j : ℕ))
 
 -- Once you complete the definition above, this proof should be `by rfl`
-example  {n : ℕ} (v : Fin n → ℝ) : myVandermonde v =  Matrix.vandermonde v := sorry --by rfl
+example  {n : ℕ} (v : Fin n → ℝ) : myVandermonde v =  Matrix.vandermonde v := by rfl
 
 
 /-!
@@ -80,7 +80,7 @@ A `transvection i j c` is the matrix `1 + single i j c`:
 - Left-multiplying by it adds `c` times row `j` to row `i`.
 - Right-multiplying by it adds `c` times column `i` to column `j`.
 
-The algorithm (for `M` with `M 1 1 ≠ 0`):
+**The algorithm** (for `M` with `M 1 1 ≠ 0`):
 1. Left-multiply by `transvection 0 1 (-M 0 1 / M 1 1)` to zero out the `(0,1)`-entry.
    This adds `(-M 0 1 / M 1 1)` times row 1 to row 0, and does not touch row 1.
 2. Right-multiply by `transvection 1 0 (-M 1 0 / M 1 1)` to zero out the `(1,0)`-entry.
@@ -93,7 +93,7 @@ section GaussianElimination
 variable {𝕜 : Type*} [Field 𝕜]
 
 /-
-### Warmup: transvections
+### Warm-ups: the transvection API
 
 The key simp lemmas for working with transvections are listed below.
 They are sufficient to solve the exercises below (and can even be found using `apply?`).
@@ -139,12 +139,11 @@ example (M : Matrix (Fin 2) (Fin 2) 𝕜) (c : 𝕜) (a : Fin 2) :
 
 #check TransvectionStruct
 #check TransvectionStruct.mk
-#check (⟨0,1,by simp,5⟩ : TransvectionStruct (Fin 2) ℝ)
+#check (⟨1,2,by simp,5⟩ : TransvectionStruct (Fin 2) ℝ)
 
 open TransvectionStruct
 
-#check (⟨0,1,by simp,5⟩ : TransvectionStruct (Fin 2) ℝ).toMatrix
-example : (⟨0,1,by simp,5⟩ : TransvectionStruct (Fin 2) ℝ).toMatrix = transvection 0 1 (5 : ℝ) := rfl
+#check (⟨1,2,by simp,5⟩ : TransvectionStruct (Fin 2) ℝ).toMatrix
 
 
 /-- **Gaussian elimination for 2×2 matrices**: any matrix with `M 1 1 ≠ 0`
@@ -155,12 +154,21 @@ can be brought to diagonal form by one column operation and one row operation.
 theorem gaussian_elim_2x2 (M : Matrix (Fin 2) (Fin 2) 𝕜) (hM : M 1 1 ≠ 0) :
     ∃ T₁ T₂ : TransvectionStruct (Fin 2) 𝕜 , ∃ D : Fin 2 → 𝕜,
      T₁.toMatrix * M * T₂.toMatrix = diagonal D := by
-  sorry
+  let T₁ : TransvectionStruct (Fin 2) 𝕜 :=  ⟨0, 1, by simp, (-M 0 1 / M 1 1)⟩
+  let T₂ : TransvectionStruct (Fin 2) 𝕜 :=  ⟨1, 0, by simp, (-M 1 0 / M 1 1)⟩
+  use T₁, T₂
+  use fun i => (T₁.toMatrix * M * T₂.toMatrix) i i
+  ext i j
+  by_cases hij : i = j
+  · rw [hij]
+    simp
+  · fin_cases i <;> fin_cases j <;> simp_all [T₁,T₂]
 
 /- As a challenge, you can try the case where M 1 1 = 0, or think about the 3x3 case.
   You can gain some inspiration by looking at Mathlib's proof of the general case.
+-/
 
-  Note: `apply?` finds and applies the general theorem to the 3x3 case.
+/- Note: `apply?` finds and applies the general theorem.
   You might find it more rewarding to produce to the required lists L, L' of transvections yourself.
   Hint: you can use a separate definition `def myDef : someType := theDefinition` to define these-/
 theorem gaussian_elim_3x3 (M : Matrix (Fin 3) (Fin 3) 𝕜) (h11 : M 1 1 ≠ 0) (h22 : M 2 2 ≠ 0) :
